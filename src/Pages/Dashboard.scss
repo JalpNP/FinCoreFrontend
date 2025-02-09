@@ -1,0 +1,159 @@
+.dashboard-container {
+  padding: 30px;
+  background-color: #f4f7fa;
+  font-family: 'Roboto', sans-serif;
+
+  h2 {
+    font-size: 2rem;
+    color: #2d3e50;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .company-selection {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    
+    select {
+      padding: 12px 15px;
+      font-size: 1rem;
+      border: 1px solid #ced4da;
+      border-radius: 8px;
+      width: 280px;
+      background-color: #ffffff;
+      color: #495057;
+      cursor: pointer;
+      transition: border-color 0.3s, box-shadow 0.3s;
+
+      &:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+    }
+
+    .create-company-btn {
+      padding: 12px 20px;
+      background-color: #17a2b8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      width: 280px;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #138496;
+      }
+    }
+
+    button {
+      padding: 12px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      width: 280px;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+
+      &:disabled {
+        background-color: #6c757d;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .company-info {
+    margin-top: 30px;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+    
+    h3 {
+      font-size: 1.8rem;
+      color: #2d3e50;
+    }
+
+    img {
+      width: 120px;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #6c757d;
+      margin-top: 10px;
+    }
+  }
+
+  .create-company {
+    margin-top: 40px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+    h3 {
+      font-size: 1.8rem;
+      color: #2d3e50;
+      margin-bottom: 20px;
+    }
+
+    input, select {
+      padding: 12px;
+      width: 280px;
+      border-radius: 8px;
+      border: 1px solid #ced4da;
+      font-size: 1rem;
+      color: #495057;
+      background-color: #f8f9fa;
+      transition: border-color 0.3s, box-shadow 0.3s;
+
+      &:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+    }
+
+    button {
+      padding: 12px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      width: 280px;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #218838;
+      }
+    }
+  }
+
+  .error-message {
+    color: #e74c3c;
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+}
