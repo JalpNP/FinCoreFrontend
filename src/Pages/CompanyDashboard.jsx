@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./CompanyDashboard.scss";
@@ -11,21 +11,25 @@ const CompanyDashboard = () => {
   const [showForm, setShowForm] = useState(false);
   const [isStartDateEditable, setIsStartDateEditable] = useState(true);
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:8000/api/auth/financial-years/${company_name}`)
-      .then((response) => {
-        setFinancialYears(response.data);
+  const fetchFinancialYears = useCallback(async () => {
+    try {
+      const response = await axios.get(`http://localhost:8000/api/auth/financial-years/${company_name}`);
+      setFinancialYears(response.data);
 
-        if (response.data.length > 0) {
-          const lastEndDate = new Date(response.data[response.data.length - 1].end_of_year);
-          lastEndDate.setDate(lastEndDate.getDate() + 1);
-          setNewStartDate(lastEndDate.toISOString().split("T")[0]);
-          setIsStartDateEditable(false); 
-        }
-      })
-      .catch((error) => console.error("Error fetching financial years:", error));
+      if (response.data.length > 0) {
+        const lastEndDate = new Date(response.data[response.data.length - 1].end_of_year);
+        lastEndDate.setDate(lastEndDate.getDate() + 1);
+        setNewStartDate(lastEndDate.toISOString().split("T")[0]);
+        setIsStartDateEditable(false);
+      }
+    } catch (error) {
+      console.error("Error fetching financial years:", error);
+    }
   }, [company_name]);
+
+  useEffect(() => {
+    fetchFinancialYears();
+  }, [fetchFinancialYears]);
 
   const handleAddFinancialYear = async () => {
     if (!newStartDate || !newEndDate) return;
